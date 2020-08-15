@@ -9,7 +9,7 @@ Thanks to SuperZazu for creating it!
 
 This project is to help me familiarize myself with the audio capabilities of the Love2D engine, as well as to learn some Lua scripting. 
 
-This program can:
+This program can:\n
   generate audible waveforms
   apply effects
   play with keyboard controls
