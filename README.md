@@ -15,7 +15,7 @@ This program can:
   play with keyboard controls
   change waveforms and octaves
   
-To Do: 
+I still have some work including: 
 Build sequencer
 Create GUI
  
