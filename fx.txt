@@ -1,0 +1,102 @@
+FX are Available since LÖVE 11.0
+This enum is not supported in earlier versions.
+https://love2d.org/wiki/EffectType
+
+Uses OpenAL https://kcat.strangesoft.net/misc-downloads/Effects%20Extension%20Guide.pdf
+
+number represents real (double-precision floating-point) numbers.
+
+
+chorus
+    Plays multiple copies of the sound with slight pitch and time variation. Used to make sounds sound "fuller" or "thicker".
+  
+  
+  EffectWaveform  waveform    'sine', 'sawtooth', 'square', 'triangle'
+  number phase
+  number rate
+  number depth
+  number feedback
+  number delay
+
+compressor
+    Decreases the dynamic range of the sound, making the loud and
+    quiet parts closer in volume, producing a more uniform amplitude    throughout time.
+  The only parameter is boolean enable
+
+distortion
+    Alters the sound by amplifying it until it clips, shearing off 
+    parts of the signal, leading to a compressed and distorted sound.
+  
+  number gain
+  number edge
+  number lowcut
+  number center
+  number bandwidth
+
+echo
+    Decaying feedback based effect, on the order of seconds. Also 
+    known as delay; causes the sound to repeat at regular intervals 
+    at a decreasing volume.
+    
+  number delay
+  number tapdelay
+  number damping
+  number feedback
+  number spread
+
+equalizer
+    Adjust the frequency components of the sound using a 4-band (low-
+    shelf, two band-pass and a high-shelf) equalizer.
+    
+  number lowgain
+  number lowcut
+  number lowmidgain
+  number lowmidfrequency
+  number lowmidbandwidth
+  number highmidgain
+  number highmidfrequency
+  number highmidbandwidth
+  number highgain
+  number highcut
+
+flanger
+    Plays two copies of the sound; while varying the phase, or 
+    equivalently delaying one of them, by amounts on the order of 
+    milliseconds, resulting in phasing sounds.
+  
+  EffectWaveform  waveform    'sine', 'sawtooth', 'square', 'triangle'
+  number phase
+  number rate
+  number depth
+  number feedback
+  number delay
+
+reverb
+    Decaying feedback based effect, on the order of milliseconds. 
+    Used to simulate the reflection off of the surroundings.
+    
+  value   name              range         actual values
+  
+  number  gain              0.0 -  1
+  number  highgain          0.0 -  1
+  number  density           0.0 -  1
+  number  diffusion         0.0 -  1
+  number  decaytime         0.1 - 20
+  number  decayhighratio    0.1 - 20
+  number  earlygain         0.0 - 3.16    -100dB - +10dB 
+  number  earlydelay        0.0 - 0.3
+  number  lategain
+  number  latedelay
+  number  roomrolloff
+  number  airabsorption
+  bool    highlimit
+
+ringmodulator
+    An implementation of amplitude modulation; multiplies the source 
+    signal with a simple waveform, to produce either volume changes, 
+    or inharmonic overtones.
+    
+  value           name              range         actual values
+  EffectWaveform  waveform    'sine', 'sawtooth', 'square', 'triangle'
+  number          frequency
+  number          highcut
