@@ -9,13 +9,15 @@ Thanks to SuperZazu for creating it!
 
 This project is to help me familiarize myself with the audio capabilities of the Love2D engine, as well as to learn some Lua scripting. 
 
-This program can:\n
+This program can:
   generate audible waveforms
   apply effects
   play with keyboard controls
   change waveforms and octaves
   
 I still have some work including: 
-Build sequencer
-Create GUI
+
+  -Build sequencer
+  
+  -Create GUI
  
