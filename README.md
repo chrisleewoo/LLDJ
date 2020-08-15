@@ -1,6 +1,7 @@
-# LLDJ
+# LoveDJ
 Love Looper DJ: The looping track-by-joypad synth and sequencer for Love2D
-"Yet Another LSDJ Wannabe"
+My latest YALP:
+  "Yet Another LSDJ Wannabe" 
 
 Built off of the Denver waveform library: https://love2d.org/forums/viewtopic.php?t=79499
 
@@ -14,7 +15,7 @@ This program can:
   play with keyboard controls
   change waveforms and octaves
   
- To DO:
-  Build sequencer
-  Create GUI
+ To Do:
+ _Build sequencer
+ _Create GUI
  
