@@ -10,13 +10,15 @@ number represents real (double-precision floating-point) numbers.
 chorus
     Plays multiple copies of the sound with slight pitch and time variation. Used to make sounds sound "fuller" or "thicker".
   
+  value           name            range         actual values
   
-  EffectWaveform  waveform    'sine', 'sawtooth', 'square', 'triangle'
-  number phase
-  number rate
-  number depth
-  number feedback
-  number delay
+  EffectWaveform  waveform        'sine','triangle'
+  
+  number          phase          -180 -> 180    degrees
+  number          rate            0.0 -> 10.0   mod rate
+  number          depth           0.0 -> 1.0    amount
+  number          feedback       -1.0 -> 1.0    amount (negative reverses phase)
+  number          delay           0.0 -> 0.016  seconds
 
 compressor
     Decreases the dynamic range of the sound, making the loud and
@@ -27,49 +29,58 @@ distortion
     Alters the sound by amplifying it until it clips, shearing off 
     parts of the signal, leading to a compressed and distorted sound.
   
-  number gain
-  number edge
-  number lowcut
-  number center
-  number bandwidth
+  value   name        range         actual values
+  
+  number  gain        0.01 -> 1.0   attenuation
+  number  edge         0.0 -> 1.0   shape
+  number  lowcut      80.0 -> 24k   Hz
+  number  center      80.0 -> 24k   Hz
+  number  bandwidth   80.0 -> 24k   Hz
 
 echo
     Decaying feedback based effect, on the order of seconds. Also 
     known as delay; causes the sound to repeat at regular intervals 
     at a decreasing volume.
-    
-  number delay
-  number tapdelay
-  number damping
-  number feedback
-  number spread
+
+  value   name        range         actual values
+      
+  number  delay       0.0 -> 0.207  seconds* 
+  number  tapdelay    0.0 -> 0.404  seconds*
+  number  damping     0.0 -> 0.99   high frequency damping amount
+  number  feedback    0.0 -> 1.0    feedback amount
+  number  spread      -1.0 -> 1.0   panning amount (0 is center)
 
 equalizer
     Adjust the frequency components of the sound using a 4-band (low-
     shelf, two band-pass and a high-shelf) equalizer.
-    
-  number lowgain
-  number lowcut
-  number lowmidgain
-  number lowmidfrequency
-  number lowmidbandwidth
-  number highmidgain
-  number highmidfrequency
-  number highmidbandwidth
-  number highgain
-  number highcut
+  
+  value   name              range           actual values
+  
+  number  lowgain           0.126 -> 7.943  cut or boost (1.0 is no gain)
+  number  lowmidgain        0.126 -> 7.943  cut or boost (1.0 is no gain)
+  number  highmidgain       0.126 -> 7.943  cut or boost (1.0 is no gain)
+  number  highgain          0.126 -> 7.943  cut or boost (1.0 is no gain)
+  number  lowmidbandwidth   0.01 -> 1.0     width
+  number  highmidbandwidth  0.01 -> 1.0     width
+  number  lowcut             50.0 -> 800.0  Hz
+  number  lowmidfrequency   200.0 -> 3000.0 Hz 
+  number  highmidfrequency  1k.0 -> 8k.0    Hz
+  number  highcut           4k.0 -> 16k.0   Hz
 
 flanger
     Plays two copies of the sound; while varying the phase, or 
     equivalently delaying one of them, by amounts on the order of 
     milliseconds, resulting in phasing sounds.
   
-  EffectWaveform  waveform    'sine', 'sawtooth', 'square', 'triangle'
-  number phase
-  number rate
-  number depth
-  number feedback
-  number delay
+  value           name         range         actual values
+    
+  EffectWaveform  waveform    'sine','triangle'
+  
+  number          phase      -180 -> 180     degrees
+  number          rate        0.0 -> 10.0    repeats per second
+  number          depth       0.0 -> 1.0     pitch modulation ratio
+  number          feedback   -1.0 -> 1.0     negative reverses phase
+  number          delay       0.0 -> 0.004   seconds*
 
 reverb
     Decaying feedback based effect, on the order of milliseconds. 
@@ -77,26 +88,33 @@ reverb
     
   value   name              range         actual values
   
-  number  gain              0.0 -  1
-  number  highgain          0.0 -  1
-  number  density           0.0 -  1
-  number  diffusion         0.0 -  1
-  number  decaytime         0.1 - 20
-  number  decayhighratio    0.1 - 20
-  number  earlygain         0.0 - 3.16    -100dB - +10dB 
-  number  earlydelay        0.0 - 0.3
-  number  lategain
-  number  latedelay
-  number  roomrolloff
-  number  airabsorption
-  bool    highlimit
+  number  gain              0.0 ->  1       -100dB -> 0dB
+  number  highgain          0.0 ->  1       -100dB -> 0dB
+  number  density           0.0 ->  1       "coloration" value
+  number  diffusion         0.0 ->  1         linear multiplier
+  number  decaytime         0.1 -> 20         0.1 -> 20 seconds
+  number  decayhighratio    0.1 -> 20         0.1 -> 20 seconds
+  number  earlygain         0.0 -> 3.16    -100dB -> +10dB 
+  number  earlydelay        0.0 -> 0.3       0 ms -> 300 ms (milliseconds) 
+  number  lategain          0.0 -> 10.0    -100dB -> +20dB
+  number  latedelay         0.0 -> 0.1       0 ms -> 100 ms
+  number  roomrolloff       0.0 -> 10.0     linear multiplier
+  number  airabsorption     0.892 ->1.0     linear gain per meter
+  bool    highlimit         while true, limits decayhighratio below airabsortion
 
 ringmodulator
     An implementation of amplitude modulation; multiplies the source 
     signal with a simple waveform, to produce either volume changes, 
     or inharmonic overtones.
     
-  value           name              range         actual values
+  value           name         range          actual values
+  
   EffectWaveform  waveform    'sine', 'sawtooth', 'square', 'triangle'
-  number          frequency
-  number          highcut
+  
+  number          frequency    0.0 -> 8000.0  Hz
+  number          highcut      0.0 -> 24k     Hz
+  
+  
+  
+  
+  *documentation does not specify

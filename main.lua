@@ -1,6 +1,8 @@
 local Synthesizer = require 'Synthesizer' -- requires middleclass
 local Sequencer = require 'Sequencer'
 
+current_wavetype = 'square'
+
 function love.load()
 	synth = Synthesizer:new('square')
   seq = Sequencer:new()
@@ -27,22 +29,28 @@ function love.keypressed(key)
   elseif key == '1' then
     synth:stopNotesOnOctave(current_octave)
     synth:set_wavetype('triangle') 
+    current_wavetype = 'triangle'
     --love.graphics.setBackgroundColor(250,0,0)
   elseif key == '2' then
     synth:stopNotesOnOctave(current_octave)
     synth:set_wavetype('square')
+    current_wavetype = 'square'
   elseif key == '3' then
     synth:stopNotesOnOctave(current_octave)
     synth:set_wavetype('sinus')
+    current_wavetype = 'sine'
   elseif key == '4' then
     synth:stopNotesOnOctave(current_octave)
     synth:set_wavetype('sawtooth')
+    current_wavetype = 'sawtooth'
   elseif key == '5' then
     synth:stopNotesOnOctave(current_octave)
     synth:set_wavetype('whitenoise')
+    current_wavetype = 'whitenoise'
   elseif key == '6' then
     synth:stopNotesOnOctave(current_octave)
     synth:set_wavetype('pinknoise')
+    current_wavetype = 'pinknoise'
 
   --elseif key == '0' then
     --synth:playBB()
@@ -71,6 +79,10 @@ end
 function love.draw()
 	love.graphics.printf('LOVE synthesizer',0,0,320, 'center')
 	love.graphics.printf('use : z-m to play \n\n up/down to change octaves \n\n and 1-6 to select waveforms', 0, 30, 320, 'center')
+  love.graphics.printf('octave\nwaveform\neffect', 0, 240, 320)
+  love.graphics.printf(current_octave, 70, 240, 320)
+  love.graphics.printf(current_wavetype, 70, 254, 320)
+  love.graphics.printf('none', 70, 268, 320)
 end
 
 --file management?
