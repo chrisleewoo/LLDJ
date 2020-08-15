@@ -1,8 +1,9 @@
 local Synthesizer = require 'Synthesizer' -- requires middleclass
-local sequencer = require 'sequencer'
+local Sequencer = require 'Sequencer'
 
 function love.load()
 	synth = Synthesizer:new('square')
+  seq = Sequencer:new()
 
 	keyboard_bind = {z='C', s='C#', x='D', d='D#', c='E', v='F', g='F#', b='G', h='G#', n='A', j='A#', m='B'}
 	current_octave = 4
@@ -57,7 +58,21 @@ end
 
 
 -- show informations
+--need pages and page switching
+
+--Project           Groove
+--   |                |
+-- Song - Pattern - Chain - Instrument
+--                              |
+--                            Table
+
+--PRJ SNG PTN GRV CHN INS TBL
+
 function love.draw()
 	love.graphics.printf('LOVE synthesizer',0,0,320, 'center')
 	love.graphics.printf('use : z-m to play \n\n up/down to change octaves \n\n and 1-6 to select waveforms', 0, 30, 320, 'center')
 end
+
+--file management?
+--timing
+
