@@ -15,6 +15,6 @@ This program can:
   change waveforms and octaves
   
  To DO:
- -Build sequencer
- -Create GUI
- -
+  Build sequencer
+  Create GUI
+ 
